@@ -27,14 +27,13 @@
 
 class MAX7219{
     private:
-    const uint8_t din = 2, cs = 3, clk = 4;
+    uint8_t din, cs, clk; /* by default, the values are pins 2, 3, 4 */
     void write(uint8_t addr, uint8_t data);
     public:
-    MAX7219();
-    //MAX7219(const uint8_t din, const uint8_t cs, const uint8_t clk);
-    void writeDigit(const uint8_t digit, const uint8_t value, const bool dp = false);
+    MAX7219(const uint8_t ch_din = 2, const uint8_t ch_cs = 3, const uint8_t ch_clk = 4);
+    void writeCharacter(const uint8_t digit, const uint8_t value, const bool dp = false);
     void writeCustom(const uint8_t digit, const uint8_t value, const bool dp = false);
+    void writeString(const char str[]);
     void writeFloat(float num);
     void clearDigits();
-    void testAllOn(uint32_t del);
 };
