@@ -1,9 +1,5 @@
 #include <Arduino.h>
 
-#define DIN 2
-#define CS 3
-#define CLK 4
-
 #define SHUTDOWN 0xC
 #define DISPLAY_TEST 0xF
 #define INTENSITY 0xA
