@@ -5,12 +5,9 @@
  *  
  */
 
-
-
 #include "max7219.hpp"
 
 MAX7219 vfd;
-
 
 void setup() {
 }
