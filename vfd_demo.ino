@@ -1,3 +1,12 @@
+/* 
+ *  ANOTHER MAX7219 LIBRARY 
+    @cultsauce 2022
+    By default, the pins used for SPI connection are: DIN = 2, CS = 3, CLK = 4
+ *  
+ */
+
+
+
 #include "max7219.hpp"
 
 MAX7219 vfd;
@@ -7,6 +16,7 @@ void setup() {
 }
 
 void loop() {
+  
   for (auto k = 0; k < 6; k++) {
 
     for (auto m = 0; m < 2; m++) {
@@ -19,18 +29,18 @@ void loop() {
         delay(100);
       }
     }
-    vfd.writeDigit(k, k, true);
+    vfd.writeCharacter(k, k, true);
   }
 
-  vfd.writeDigit(0, 0, true);
+  vfd.writeCharacter(0, 0, true);
   for (int j = 0; j < 2; j++) {
-    vfd.writeDigit(1, j, true);
+    vfd.writeCharacter(1, j, true);
     for (int k = 0; k < 9; k++) {
-      vfd.writeDigit(2, k, true);
+      vfd.writeCharacter(2, k, true);
       for (int l = 0; l < 9; l++) {
-        vfd.writeDigit(3, l, true);
+        vfd.writeCharacter(3, l, true);
         for (int m = 0; m < 9; m++) {
-          vfd.writeDigit(4, m, true);
+          vfd.writeCharacter(4, m, true);
           delay(5);
         }
       }
@@ -70,33 +80,19 @@ void loop() {
     }
   }
 
-  uint8_t seq2[] = {0b01110111, 0b01111111, 0b01001110, 0b01111110, 0b01001111};
-  for (int i = 0; i < 5; i++) {
-
-    vfd.writeCustom(i, seq2[i]);
-
-  }
-  delay(3000);
-  uint8_t seq[] = {0b00111110, 0b00110111 , 0b00, 0b01111110, 0b00110111};
-  for (int i = 0; i < 5; i++) {
-
-    vfd.writeCustom(i, seq[i]);
-
-  }
+  vfd.writeString("abcde");
   delay(2000);
-
-  vfd.clearDigits();
-  vfd.testAllOn(300);
-  delay(300);
-  vfd.testAllOn(300);
-  delay(300);
-  vfd.testAllOn(300);
-  delay(300);
-
-  for (int i = 0; i < 5; i++) {
-    vfd.writeCustom(i, seq[i]);
-  }
+  vfd.writeString("fghij");
   delay(2000);
-
+  vfd.writeString("klmno");
+  delay(2000);
+  vfd.writeString("pqrst");
+  delay(2000);
+  vfd.writeString("uvxyz");
+  delay(2000);
+  vfd.writeString("01234");
+  delay(2000);
+  vfd.writeString("56789");
+  delay(2000);
 
 }
